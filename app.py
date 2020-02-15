@@ -6,11 +6,12 @@ app = Flask(__name__)
 
 ENV = 'dev'
 
-app.debug = False
-
-if ENV == 'dev':
+if ENV == 'prod':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:kush5255@localhost/feedback_form_using_flask'
+else:
+    app.debug = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aozppfoagneyoa:216f4408b030695f2616f2dbee2bf0effee37146665904143da4c208dce315d4@ec2-3-234-109-123.compute-1.amazonaws.com:5432/d6v0m39e1ob3t6'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
