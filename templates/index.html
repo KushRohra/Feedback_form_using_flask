@@ -2,13 +2,15 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="static/style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <title>Please rate your service</title>
     </head>
     <body>
         <div class="container">
-            <img src="static/logo.png" alt="Logo" class="logo">
-            <!-- @todo message -->
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            {% if message %}
+                <p class="message">{{ message | safe }}</p>
+            {% endif %}
             <form action="/submit" method="post">
                 <div class="form-group">
                   <h3>Customer Name</h3>
